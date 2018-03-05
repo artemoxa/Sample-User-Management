@@ -13,10 +13,14 @@ public interface DepartmentDao {
 
     Department getDepartmentById(Integer departmentId);
 
+    Department getDepartmentByIdWithBeanPropertyRowMapper(Integer departmentId);
+
     Department addDepartment(Department department);
 
-    void updateDepartment(Department department);
+    Department addDepartmentWithSimpleJdbcInsert(Department department);
 
-    void deleteDepartmentById(Integer id);
+    Integer updateDepartment(Department department);
+
+    Integer deleteDepartmentById(Integer id);
 
 }

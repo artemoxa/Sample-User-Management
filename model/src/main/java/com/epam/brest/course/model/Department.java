@@ -11,6 +11,20 @@ public class Department {
 
     private String description;
 
+    public Department() {
+    }
+
+    public Department(String departmentName, String description) {
+        this.departmentName = departmentName;
+        this.description = description;
+    }
+
+    public Department(Integer departmentId, String departmentName, String description) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.description = description;
+    }
+
     public Integer getDepartmentId() {
         return departmentId;
     }
