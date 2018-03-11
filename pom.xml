@@ -16,6 +16,7 @@
         <module>dao</module>
         <module>service</module>
         <module>test-db</module>
+        <module>web-app</module>
     </modules>
 
     <distributionManagement>
@@ -30,6 +31,7 @@
         <h2.version>1.4.196</h2.version>
         <spring.version>4.3.14.RELEASE</spring.version>
         <log4j2.version>2.10.0</log4j2.version>
+        <thymeleaf-spring4.version>3.0.9.RELEASE</thymeleaf-spring4.version>
     </properties>
 
     <dependencyManagement>
@@ -46,9 +48,19 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.brest.course</groupId>
+                <artifactId>service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest.course</groupId>
                 <artifactId>test-db</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest.course</groupId>
+                <artifactId>web-app</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -70,6 +82,24 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring4</artifactId>
+                <version>${thymeleaf-spring4.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
@@ -155,6 +185,22 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
                     <version>2.7</version>
+                </plugin>
+
+                <!-- embedded Jetty server, for testing -->
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.4.8.v20171121</version>
+                    <configuration>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <webApp>
+                            <contextPath>/</contextPath>
+                        </webApp>
+                        <httpConnector>
+                            <port>8080</port>
+                        </httpConnector>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
